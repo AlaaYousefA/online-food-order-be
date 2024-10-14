@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity(name = "food_item")
@@ -39,4 +40,7 @@ public class FoodItemEntity { // 6
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @OneToMany(mappedBy = "foodItem")
+    private List<FoodCartEntity> foodCartEntries; // Represents all the carts that contain this food item (one-to-many)
 }

@@ -1,6 +1,7 @@
 package com.foodorder.backend.domain.model;
 
 import com.foodorder.backend.domain.enums.SystemRoleEnum;
+import com.foodorder.backend.persistence.entity.CartEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,4 +21,6 @@ public class SysUser {
     private String email;
 
     private SystemRoleEnum role;
+
+    private CartEntity cartId;
 }

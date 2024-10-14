@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -19,15 +21,20 @@ public class CartEntity {
     private Long id;
 
     @Column(name = "total_price")
-    private Double totalPrice;
+    private BigDecimal totalPrice;
 
     @Column(name = "order_confirmed")// is order complete and to the way to the user to deliver (all payment cash only)
     private Boolean orderConfirmed;
 
-    @OneToMany(mappedBy = "cart")
-    private List<OrdersEntity> listOfOrders;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private SysUserEntity userId;
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+    @OneToOne(mappedBy = "cart") // 'cart' is the field in OrdersEntity that maps this relationship
+    private OrdersEntity order;
+
+    @OneToMany(mappedBy = "cart")
+    private List<FoodCartEntity> foodCartEntries; // Represents all the food items in the cart (one-to-many)
 }

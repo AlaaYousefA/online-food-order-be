@@ -6,28 +6,30 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
-@Data
-@Entity
-@NoArgsConstructor
+@Entity(name = "food_cart")
+@Table(name = "food_cart")
 @AllArgsConstructor
-@Table(name = "orders")
-public class OrdersEntity {
+@NoArgsConstructor
+@Data
+public class FoodCartEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "total_price")
-    private Double totalPrice;
-
-    @Column(name = "status")// Indicates if the order confirmed or not
-    private Boolean status;
+    @Column(name = "quantity")
+    private Long quantity;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "cart_id", referencedColumnName = "id")
     private CartEntity cart;
+
+    @ManyToOne
+    @JoinColumn(name = "food_item_id", referencedColumnName = "id")
+    private FoodItemEntity foodItem;
 }

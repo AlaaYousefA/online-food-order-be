@@ -28,4 +28,8 @@ public class SysUserEntity {
 
     @Column(name = "role")
     private SystemRoleEnum role;
+
+    @OneToOne
+    @JoinColumn(name = "cart_id", referencedColumnName = "id")
+    private CartEntity cartId;
 }

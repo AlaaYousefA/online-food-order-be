@@ -18,14 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CartRequest {
-
-    @Column(name = "order_confirmed")// is order complete and to the way to the user to deliver (all payment cash only)
-    private Boolean orderConfirmed;
-
-    @OneToMany(mappedBy = "cart")
     private List<OrdersEntity> listOfOrders;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private SysUserEntity userId;
+    private Long userId;
 }

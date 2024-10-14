@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Data
@@ -17,9 +18,7 @@ import java.util.List;
 public class Cart {
     private Long id;
 
-    private Double totalPrice;
+    private BigDecimal totalPrice;
 
     private Boolean orderConfirmed;
-
-    private Long userId;
 }
