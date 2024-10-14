@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CartResponse {
+    private Long id;
 }

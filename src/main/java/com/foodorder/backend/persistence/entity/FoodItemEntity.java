@@ -29,7 +29,7 @@ public class FoodItemEntity { // 6
 
     @Column(name = "quantity")
     private Long quantity;
-// i am the onley light on you life , iam the sun
+
     @ManyToOne
     @JoinColumn(name = "discount_id", referencedColumnName = "id", nullable = true)
     private DiscountEntity discount;

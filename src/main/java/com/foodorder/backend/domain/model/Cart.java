@@ -18,7 +18,7 @@ public class Cart {
     private Long id;
 
     private Double totalPrice;
-    // is order complete and to the way to the user to deliver (all payment cash only)
+
     private Boolean orderConfirmed;
 
     private Long userId;
