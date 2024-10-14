@@ -23,7 +23,7 @@ public class FoodCart {
 
     private LocalDateTime createdAt;
 
-    private CartEntity cart;
+    private Long cartId;
 
-    private FoodItemEntity foodItem;
+    private Long foodItemId;
 }

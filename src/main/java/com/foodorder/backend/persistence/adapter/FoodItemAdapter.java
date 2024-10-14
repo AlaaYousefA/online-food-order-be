@@ -23,6 +23,9 @@ public class FoodItemAdapter implements FoodItemRepository {
     public FoodItem createFoodItem(FoodItem foodItem) {
         FoodItemEntity foodItemEntity = foodItemMapper.modelToEntity(foodItem);
 
+        if(foodItem.getDiscountId() == null) {
+            foodItemEntity.setDiscount(null);
+        }
         return foodItemMapper.EntityToModel(foodItemJpaRepository.save(foodItemEntity));
     }
 

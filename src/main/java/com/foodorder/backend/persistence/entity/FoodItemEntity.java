@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "food_item")
-public class FoodItemEntity { // 6
+public class FoodItemEntity { // 9
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -32,7 +32,7 @@ public class FoodItemEntity { // 6
     private Long quantity;
 
     @ManyToOne
-    @JoinColumn(name = "discount_id", referencedColumnName = "id", nullable = true)
+    @JoinColumn(name = "discount_id", referencedColumnName = "id")
     private DiscountEntity discount;
 
     @Column(name = "created_at")

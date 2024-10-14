@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,12 +18,6 @@ public class CartEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
-    @Column(name = "total_price")
-    private BigDecimal totalPrice;
-
-    @Column(name = "order_confirmed")// is order complete and to the way to the user to deliver (all payment cash only)
-    private Boolean orderConfirmed;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

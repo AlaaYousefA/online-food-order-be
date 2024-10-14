@@ -17,4 +17,6 @@ public class CreateFoodItemRequest {
     private Double price;
 
     private Long quantity;
+
+    private Long discountId;
 }

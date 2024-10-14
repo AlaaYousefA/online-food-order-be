@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class CartController {
     private final CartService cartService;
 // add item to cart, deleteItem, deleteMultipleItems
-    @PostMapping
-    private ResponseEntity<Long> addItemToCart()
+//    @PostMapping
+//    private ResponseEntity<Long> addItemToCart()
 //    // Indicates if items are still available
 //    private Boolean itemsAvailable;
     //    private Double totalPrice;
