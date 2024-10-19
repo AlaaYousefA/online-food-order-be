@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -29,7 +31,14 @@ public class SysUserEntity {
     @Column(name = "role")
     private SystemRoleEnum role;
 
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+
     @OneToOne
     @JoinColumn(name = "cart_id", referencedColumnName = "id")
-    private CartEntity cartId;
+    private CartEntity cart;
 }

@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -22,5 +24,9 @@ public class SysUser {
 
     private SystemRoleEnum role;
 
-    private CartEntity cartId;
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
+    private Long cartId;
 }

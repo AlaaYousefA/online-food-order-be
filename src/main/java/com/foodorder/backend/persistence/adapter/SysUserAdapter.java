@@ -20,4 +20,9 @@ public class SysUserAdapter implements SysUserRepository {
                 ()-> new ResourceNotFoundException("id not found : " + id)
         ));
     }
+
+    @Override
+    public SysUser save(SysUser sysUser) {
+        return sysUserMapper.entityToModel(sysUserJpaRepository.save(sysUserMapper.modelToEntity(sysUser)));
+    }
 }

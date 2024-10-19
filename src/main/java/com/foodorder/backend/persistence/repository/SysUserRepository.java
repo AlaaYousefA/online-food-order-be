@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SysUserRepository {
     SysUser getUserById(Long id);
+
+    SysUser save(SysUser sysUser);
 }

@@ -5,12 +5,15 @@ import com.foodorder.backend.domain.model.FoodItem;
 import com.foodorder.backend.persistence.repository.FoodItemRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class FoodItemService {
@@ -45,4 +48,10 @@ public class FoodItemService {
     public void deleteMultipleFoodItems(List<Long> ids) {
         foodItemRepository.deleteMultipleFoodItems(ids);
     }
+
+
+//    @Scheduled(cron = "0/5 * * ? * * ")
+//    public void test(){
+//        log.info("test is running");
+//    }
 }

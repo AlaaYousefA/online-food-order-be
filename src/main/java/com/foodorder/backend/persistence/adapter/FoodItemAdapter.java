@@ -66,4 +66,9 @@ public class FoodItemAdapter implements FoodItemRepository {
     public void deleteMultipleFoodItems(List<Long> ids) {
         foodItemJpaRepository.deleteAllById(ids);
     }
+
+    @Override
+    public Long updateItemInCart(Long foodItemId, Long quantity, Long cartId) {
+        return foodItemJpaRepository.updateItemInCart(foodItemId, quantity, cartId);
+    }
 }

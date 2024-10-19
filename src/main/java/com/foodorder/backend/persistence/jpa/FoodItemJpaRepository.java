@@ -27,4 +27,10 @@ public interface FoodItemJpaRepository extends JpaRepository<FoodItemEntity, Lon
     void updateFoodItem(@Param("id") Long id,
                        @Param("updatedAt") LocalDateTime updatedAt,
                        @Param("newEntity") FoodItemEntity newEntity);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE food_cart fc SET fc.quantity = :quantity " +
+            "WHERE fc.cart.id = :cartId AND fc.foodItem.id = :foodItemId")
+    Long updateItemInCart(Long foodItemId, Long quantity, Long cartId);
 }

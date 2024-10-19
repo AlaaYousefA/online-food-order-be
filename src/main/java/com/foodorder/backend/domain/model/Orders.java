@@ -29,5 +29,5 @@ public class Orders {
 
     private FoodItemEntity foodItemId;
 
-    private CartEntity chart;
+    private Long cartId;
 }

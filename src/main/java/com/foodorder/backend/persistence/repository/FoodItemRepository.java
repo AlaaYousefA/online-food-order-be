@@ -19,4 +19,6 @@ public interface FoodItemRepository {
     void deleteFoodItem(Long id);
 
     void deleteMultipleFoodItems(List<Long> ids);
+
+    Long updateItemInCart(Long foodItemId, Long quantity, Long cartId);
 }
