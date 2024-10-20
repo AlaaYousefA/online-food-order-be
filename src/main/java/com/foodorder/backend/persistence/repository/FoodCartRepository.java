@@ -14,7 +14,7 @@ public interface FoodCartRepository {
 
     void deleteItemFromCart(Long foodItemId);
 
-    Long numberOfItemsInCart();
+    Long numberOfItemsInCart(Long cartId);
 
     void deleteAllItemFromCart();
 

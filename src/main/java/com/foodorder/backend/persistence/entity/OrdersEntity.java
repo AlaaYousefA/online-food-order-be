@@ -18,6 +18,9 @@ public class OrdersEntity {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "total_items")
+    private Long totalItems;
+
     @Column(name = "total_price")
     private Double totalPrice;
 

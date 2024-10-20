@@ -55,13 +55,15 @@ public class CartService {
         return foodItemId;
     }
 
-    public Long deleteAllItemFromCart() { // return number of deleted items
+    public Long deleteAllItemFromCart() {// return number of deleted items
+        SysUser sysUser = identityProvider.currentIdentity();
+        Long cartId = sysUser.getCartId();
         foodCartRepository.deleteAllItemFromCart();
-        return numberOfItemsInCart();
+        return numberOfItemsInCart(cartId);
     }
 
-    public Long numberOfItemsInCart() {
-        return foodCartRepository.numberOfItemsInCart();
+    public Long numberOfItemsInCart(Long cartId) {
+        return foodCartRepository.numberOfItemsInCart(cartId);
     }
 
     public Cart getCart() {

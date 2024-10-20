@@ -29,8 +29,8 @@ public class FoodCartAdapter implements FoodCartRepository {
     }
 
     @Override
-    public Long numberOfItemsInCart() {
-        return foodCartJpaRepository.count();
+    public Long numberOfItemsInCart(Long cartId) {
+        return foodCartJpaRepository.countFoodCartItems(cartId);
     }
 
     @Override

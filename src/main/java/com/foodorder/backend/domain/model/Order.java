@@ -1,6 +1,5 @@
 package com.foodorder.backend.domain.model;
 
-import com.foodorder.backend.persistence.entity.CartEntity;
 import com.foodorder.backend.persistence.entity.FoodItemEntity;
 import com.foodorder.backend.persistence.entity.SysUserEntity;
 import lombok.AllArgsConstructor;
@@ -14,20 +13,17 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Orders {
+public class Order {
     private Long id;
 
-    private Long quantity;
+    private Long totalItems;
 
     private Double totalPrice;
+
     // Indicates if items in the order are available
     private Boolean status;
 
     private LocalDateTime createdAt;
-
-    private SysUserEntity userId;
-
-    private FoodItemEntity foodItemId;
 
     private Long cartId;
 }

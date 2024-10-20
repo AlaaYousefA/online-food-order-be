@@ -37,7 +37,6 @@ public class SysUserEntity {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-
     @OneToOne
     @JoinColumn(name = "cart_id", referencedColumnName = "id")
     private CartEntity cart;
