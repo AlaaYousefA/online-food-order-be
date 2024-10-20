@@ -1,17 +1,18 @@
 package com.foodorder.backend.application.controllers;
 
-import com.foodorder.backend.domain.mappers.CartMapper;
+import com.foodorder.backend.domain.model.Cart;
 import com.foodorder.backend.domain.services.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/cart")
 @RequiredArgsConstructor
 public class CartController {
     private final CartService cartService;
-    private final CartMapper cartMapper;
 
     @PutMapping
     public ResponseEntity<Long> addItemToCart(@RequestParam("foodItemId") Long foodItemId, @RequestParam("qauntity") Long quantity){
@@ -23,14 +24,29 @@ public class CartController {
         return ResponseEntity.ok(cartService.updateItemInCart(foodItemId, quantity));
     }
 
-    @DeleteMapping // return deleted food Cart id
-    public ResponseEntity<Long>
+    @GetMapping("/cart-items")
+    public ResponseEntity<Cart> getCart(){
+        return ResponseEntity.ok(cartService.getCart());
+    }
 
+    @GetMapping("/total")
+    public ResponseEntity<Long> getNumberOfItemsInCart(){
+        return ResponseEntity.ok(cartService.numberOfItemsInCart());
+    }
 
+    @DeleteMapping ("/item")// return deleted food Cart id
+    public ResponseEntity<Long> deleteItemFromCart(@RequestParam("foodItemId") Long foodItemId){
+        return ResponseEntity.ok(cartService.deleteItemFromCart(foodItemId));
+    }
 
+    @DeleteMapping("/items")
+    public ResponseEntity<Long> deleteAllItemFromCart(){ // return deleted items number
+        return ResponseEntity.ok(cartService.deleteAllItemFromCart());
+    }
 
-// deleteItem, deleteMultipleItems
-// Indicates if items are still available
-// private Boolean itemsAvailable;
-// private Double totalPrice;
+    @DeleteMapping
+    public ResponseEntity<Void> deleteMultipleItemInCart(@RequestBody List<Long> ids){
+        cartService.deleteMultipleItemInCart(ids);
+        return ResponseEntity.ok().build();
+    }
 }

@@ -1,5 +1,6 @@
 package com.foodorder.backend.domain.services;
 
+import com.foodorder.backend.domain.model.Cart;
 import com.foodorder.backend.domain.model.FoodCart;
 import com.foodorder.backend.domain.model.SysUser;
 import com.foodorder.backend.domain.providers.IdentityProvider;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -46,5 +48,29 @@ public class CartService {
         }
 
         return foodItemRepository.updateItemInCart(foodItemId, quantity, cartId);
+    }
+
+    public Long deleteItemFromCart(Long foodItemId) {
+        foodCartRepository.deleteItemFromCart(foodItemId);
+        return foodItemId;
+    }
+
+    public Long deleteAllItemFromCart() { // return number of deleted items
+        foodCartRepository.deleteAllItemFromCart();
+        return numberOfItemsInCart();
+    }
+
+    public Long numberOfItemsInCart() {
+        return foodCartRepository.numberOfItemsInCart();
+    }
+
+    public Cart getCart() {
+        SysUser sysUser = identityProvider.currentIdentity();
+        return  foodCartRepository.getCart(sysUser);
+    }
+
+
+    public void deleteMultipleItemInCart(List<Long> ids) {
+        foodCartRepository.deleteMultipleItemInCart(ids);
     }
 }
