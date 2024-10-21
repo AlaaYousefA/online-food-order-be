@@ -1,6 +1,7 @@
 package com.foodorder.backend.application.controllers;
 
 import com.foodorder.backend.domain.model.Cart;
+import com.foodorder.backend.domain.model.FoodCart;
 import com.foodorder.backend.domain.model.SysUser;
 import com.foodorder.backend.domain.providers.IdentityProvider;
 import com.foodorder.backend.domain.services.CartService;
@@ -28,8 +29,8 @@ public class CartController {
     }
 
     @GetMapping("/cart-items")
-    public ResponseEntity<Cart> getCart(){
-        return ResponseEntity.ok(cartService.getCart());
+    public ResponseEntity<List<FoodCart>> getCartItems(){
+        return ResponseEntity.ok(cartService.getCartItems());
     }
 
     @GetMapping("/total")

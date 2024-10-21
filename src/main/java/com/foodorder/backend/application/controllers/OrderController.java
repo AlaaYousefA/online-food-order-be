@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController {
     private final OrderService orderService;
 
-    @PostMapping
-    public ResponseEntity<Boolean> placeOrder() { // RETURN STATE (ACCEPTED, DECLENED)
-        return ResponseEntity.ok(orderService.placeOrder());
-    }
+//    @PostMapping
+//    public ResponseEntity<Boolean> placeOrder() { // RETURN STATE (ACCEPTED, DECLENED)
+//        return ResponseEntity.ok(orderService.placeOrder());
+//    }
 // private Boolean itemsAvailable;
     // place order
 }

@@ -18,7 +18,7 @@ public interface FoodCartRepository {
 
     void deleteAllItemFromCart();
 
-    Cart getCart(SysUser sysUser);
-
     void deleteMultipleItemInCart(List<Long> ids);
+
+    List<FoodCart> getCartItems(Long cartId);
 }

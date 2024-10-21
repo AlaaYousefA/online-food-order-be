@@ -66,13 +66,16 @@ public class CartService {
         return foodCartRepository.numberOfItemsInCart(cartId);
     }
 
-    public Cart getCart() {
-        SysUser sysUser = identityProvider.currentIdentity();
-        return  foodCartRepository.getCart(sysUser);
-    }
+
 
 
     public void deleteMultipleItemInCart(List<Long> ids) {
         foodCartRepository.deleteMultipleItemInCart(ids);
+    }
+
+    public List<FoodCart> getCartItems() {
+        SysUser user = identityProvider.currentIdentity();
+        Long cartId = user.getCartId();
+        return foodCartRepository.getCartItems(cartId);
     }
 }

@@ -59,7 +59,7 @@ public class FoodItemAdapter implements FoodItemRepository {
 
     @Override
     public void deleteFoodItem(Long id) {
-         foodItemJpaRepository.deleteById(id);
+        foodItemJpaRepository.deleteById(id);
     }
 
     @Override

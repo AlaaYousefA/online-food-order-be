@@ -29,7 +29,9 @@ public class FoodItemController {
     @GetMapping("/{id}")
     // @RolesAllowed({SystemRoleEnum.ADMIN.toString()})
     public ResponseEntity<FoodItem> getFoodItem(@PathVariable Long id) {
-        return ResponseEntity.ok(foodItemService.getFoodItem(id));
+        return ResponseEntity.ok(
+                foodItemService.getFoodItem(id)
+        );
     }
 
     @GetMapping

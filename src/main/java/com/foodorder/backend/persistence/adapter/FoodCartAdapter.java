@@ -4,6 +4,7 @@ import com.foodorder.backend.domain.mappers.FoodCartMapper;
 import com.foodorder.backend.domain.model.Cart;
 import com.foodorder.backend.domain.model.FoodCart;
 import com.foodorder.backend.domain.model.SysUser;
+import com.foodorder.backend.persistence.entity.FoodCartEntity;
 import com.foodorder.backend.persistence.jpa.FoodCartJpaRepository;
 import com.foodorder.backend.persistence.repository.FoodCartRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,6 @@ import java.util.List;
 public class FoodCartAdapter implements FoodCartRepository {
     private final FoodCartJpaRepository foodCartJpaRepository;
     private final FoodCartMapper foodCartMapper;
-    private final FoodCartRepository foodCartRepository;
 
     @Override
     public FoodCart save(FoodCart foodCart) {
@@ -38,13 +38,18 @@ public class FoodCartAdapter implements FoodCartRepository {
       foodCartJpaRepository.deleteAll();
     }
 
-    @Override
-    public Cart getCart(SysUser sysUser) {
-        return foodCartRepository.getCart(sysUser);
-    }
 
     @Override
     public void deleteMultipleItemInCart(List<Long> ids) {
          foodCartJpaRepository.deleteAllById(ids);
+    }
+
+    @Override
+    public List<FoodCart> getCartItems(Long cartId) {
+        List<FoodCartEntity> foodCartEntities = foodCartJpaRepository.findByCartId(cartId);
+
+        return foodCartEntities.stream()
+                .map(foodCartMapper::entityToModel)
+                .toList();
     }
 }
