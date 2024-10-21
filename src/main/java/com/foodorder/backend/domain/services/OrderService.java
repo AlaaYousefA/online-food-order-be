@@ -32,6 +32,8 @@ public class OrderService {
                 .status(isItemsInCartAvailable())
                 .build();
 
+        // apply discount id
+
         if(!isItemsInCartAvailable()){
             throw new RuntimeException("items not available");
         }

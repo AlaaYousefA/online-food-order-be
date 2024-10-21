@@ -9,11 +9,16 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OrderJpaRepository extends JpaRepository<OrdersEntity, Long> {
-    @Query("SELECT SUM(fc.quantity * fi.price) " +
+    @Query("SELECT SUM(fc.quantity * " +
+            "CASE " +
+            "  WHEN fi.discount IS NOT NULL THEN fi.price * (1 - fi.discount.discountPercentage / 100) " +
+            "  ELSE fi.price " +
+            "END) " +
             "FROM food_cart fc " +
             "JOIN fc.foodItem fi " +
             "WHERE fc.cart.id = :cartId")
     Double calculateTotalPrice(@Param("cartId") Long cartId);
+
 
 
     @Query("SELECT COUNT(fc) = 0 " +
