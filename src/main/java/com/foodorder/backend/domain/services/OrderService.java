@@ -58,6 +58,10 @@ public class OrderService {
     public void updateFoodItemsQuantityByOrder(Order order) {
         orderRepository.updateFoodItemsQuantityByOrder(order);
     }
-    // FUNCTION TO DO :
-    // TEST cart controller & order controller & idm == finish the project ;)
+
+    // TO DO =>
+
+    // TEST cart  controller
+    // TEST order controller
+    // idm == finish the project :)
 }
