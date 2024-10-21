@@ -13,7 +13,5 @@ public interface FoodCartJpaRepository extends JpaRepository<FoodCartEntity, Lon
     @Query("SELECT COUNT(fc) FROM food_cart fc WHERE fc.cart.id = :cartId")
     Long countFoodCartItems(@Param("cartId") Long cartId);
 
-    @Query("SELECT f FROM food_cart f WHERE f.cart.id = :cartId")
-    List<FoodCartEntity> findByCartId(@Param("cartId") Long cartId);
-
+    List<FoodCartEntity> findAllByCartId(Long cartId);
 }

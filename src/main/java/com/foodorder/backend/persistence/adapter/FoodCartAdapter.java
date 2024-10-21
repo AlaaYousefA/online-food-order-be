@@ -46,7 +46,7 @@ public class FoodCartAdapter implements FoodCartRepository {
 
     @Override
     public List<FoodCart> getCartItems(Long cartId) {
-        List<FoodCartEntity> foodCartEntities = foodCartJpaRepository.findByCartId(cartId);
+        List<FoodCartEntity> foodCartEntities = foodCartJpaRepository.findAllByCartId(cartId);
 
         return foodCartEntities.stream()
                 .map(foodCartMapper::entityToModel)

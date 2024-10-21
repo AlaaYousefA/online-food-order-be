@@ -1,9 +1,6 @@
 package com.foodorder.backend.application.controllers;
 
-import com.foodorder.backend.domain.model.Cart;
 import com.foodorder.backend.domain.model.FoodCart;
-import com.foodorder.backend.domain.model.SysUser;
-import com.foodorder.backend.domain.providers.IdentityProvider;
 import com.foodorder.backend.domain.services.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +13,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CartController {
     private final CartService cartService;
-    private final IdentityProvider identityProvider;
 
     @PutMapping
     public ResponseEntity<Long> addItemToCart(@RequestParam("foodItemId") Long foodItemId, @RequestParam("qauntity") Long quantity){
@@ -35,10 +31,7 @@ public class CartController {
 
     @GetMapping("/total")
     public ResponseEntity<Long> getNumberOfItemsInCart(){
-        SysUser sysUser = identityProvider.currentIdentity();
-        Long cartId = sysUser.getCartId();
-
-        return ResponseEntity.ok(cartService.numberOfItemsInCart(cartId));
+        return ResponseEntity.ok(cartService.numberOfItemsInCart());
     }
 
     @DeleteMapping ("/item")// return deleted food Cart id

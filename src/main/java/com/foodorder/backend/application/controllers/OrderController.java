@@ -1,7 +1,7 @@
 package com.foodorder.backend.application.controllers;
 
+import com.foodorder.backend.domain.model.Order;
 import com.foodorder.backend.domain.services.OrderService;
-import jakarta.persistence.criteria.Order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController {
     private final OrderService orderService;
 
-//    @PostMapping
-//    public ResponseEntity<Boolean> placeOrder() { // RETURN STATE (ACCEPTED, DECLENED)
-//        return ResponseEntity.ok(orderService.placeOrder());
-//    }
-// private Boolean itemsAvailable;
+    @PostMapping
+    public ResponseEntity<Order> placeOrder() { // RETURN STATE (ACCEPTED, DECLENED)
+        return ResponseEntity.ok(orderService.placeOrder());
+    }
+    // private Boolean itemsAvailable;
     // place order
 }
