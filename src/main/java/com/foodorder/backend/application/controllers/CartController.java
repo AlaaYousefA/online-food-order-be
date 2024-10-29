@@ -34,9 +34,9 @@ public class CartController {
         return ResponseEntity.ok(cartService.numberOfItemsInCart());
     }
 
-    @DeleteMapping ("/item")// return deleted food Cart id
-    public ResponseEntity<Long> deleteItemFromCart(@RequestParam("foodItemId") Long foodItemId){
-        return ResponseEntity.ok(cartService.deleteItemFromCart(foodItemId));
+    @DeleteMapping ("/item/{foodCartId}")// return deleted food Cart id
+    public ResponseEntity<Long> deleteItemFromCart(@PathVariable Long foodCartId){
+        return ResponseEntity.ok(cartService.deleteItemFromCart(foodCartId));
     }
 
     @DeleteMapping("/items")

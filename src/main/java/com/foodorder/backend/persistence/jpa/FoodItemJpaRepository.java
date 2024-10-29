@@ -30,7 +30,12 @@ public interface FoodItemJpaRepository extends JpaRepository<FoodItemEntity, Lon
 
     @Transactional
     @Modifying
-    @Query("UPDATE food_cart fc SET fc.quantity = :quantity " +
+    @Query("UPDATE food_cart fc SET fc.quantity = fc.quantity + :quantity " +
             "WHERE fc.cart.id = :cartId AND fc.foodItem.id = :foodItemId")
-    Long updateItemInCart(Long foodItemId, Long quantity, Long cartId);
+    void updateItemInCart(Long foodItemId, Long quantity, Long cartId);
+
+    @Query("SELECT CASE WHEN COUNT(fc) > 0 THEN true ELSE false END " +
+            "FROM food_cart fc WHERE fc.cart.id = :cartId AND fc.foodItem.id = :foodItemId")
+    boolean existsByCartIdAndFoodItemId(@Param("cartId") Long cartId,
+                                        @Param("foodItemId") Long foodItemId);
 }

@@ -28,6 +28,11 @@ public class CartService {
             throw new RuntimeException("Not enough food to add to cart");
         }
 
+        if(foodItemRepository.isExist(cartId, foodItemId))
+        {
+            return updateItemInCart(foodItemId, quantity);
+        }
+
         FoodCart foodCart = FoodCart.builder()
                 .createdAt(LocalDateTime.now())
                 .foodItemId(foodItemId)
@@ -50,9 +55,9 @@ public class CartService {
         return foodItemRepository.updateItemInCart(foodItemId, quantity, cartId);
     }
 
-    public Long deleteItemFromCart(Long foodItemId) {
-        foodCartRepository.deleteItemFromCart(foodItemId);
-        return foodItemId;
+    public Long deleteItemFromCart(Long foodCartId) {
+        foodCartRepository.deleteItemFromCart(foodCartId);
+        return foodCartId;
     }
 
     public Long deleteAllItemFromCart() {// return number of deleted items

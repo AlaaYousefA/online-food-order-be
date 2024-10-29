@@ -39,6 +39,7 @@ dependencies {
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 
 
+    implementation 'org.springframework.boot:spring-boot-starter-security:3.2.8'
 }
 
 tasks.named('test') {

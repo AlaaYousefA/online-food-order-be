@@ -69,6 +69,12 @@ public class FoodItemAdapter implements FoodItemRepository {
 
     @Override
     public Long updateItemInCart(Long foodItemId, Long quantity, Long cartId) {
-        return foodItemJpaRepository.updateItemInCart(foodItemId, quantity, cartId);
+        foodItemJpaRepository.updateItemInCart(foodItemId, quantity, cartId);
+        return foodItemId;
+    }
+
+    @Override
+    public boolean isExist(Long cartId, Long foodItemId) {
+        return foodItemJpaRepository.existsByCartIdAndFoodItemId(cartId, foodItemId);
     }
 }

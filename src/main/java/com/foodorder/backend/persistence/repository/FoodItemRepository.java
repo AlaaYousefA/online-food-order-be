@@ -21,4 +21,6 @@ public interface FoodItemRepository {
     void deleteMultipleFoodItems(List<Long> ids);
 
     Long updateItemInCart(Long foodItemId, Long quantity, Long cartId);
+
+    boolean isExist(Long cartId, Long foodItemId);
 }

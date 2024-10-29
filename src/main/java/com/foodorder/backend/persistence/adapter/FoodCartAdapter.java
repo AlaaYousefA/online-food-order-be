@@ -1,5 +1,6 @@
 package com.foodorder.backend.persistence.adapter;
 
+import com.foodorder.backend.application.exception.ResourceNotFoundException;
 import com.foodorder.backend.domain.mappers.FoodCartMapper;
 import com.foodorder.backend.domain.model.Cart;
 import com.foodorder.backend.domain.model.FoodCart;
@@ -24,8 +25,11 @@ public class FoodCartAdapter implements FoodCartRepository {
     }
 
     @Override
-    public void deleteItemFromCart(Long foodItemId) {
-        foodCartJpaRepository.deleteById(foodItemId);
+    public void deleteItemFromCart(Long foodCartId) {
+        if(!foodCartJpaRepository.existsById(foodCartId)) {
+            throw new ResourceNotFoundException("Food cart id does not exist");
+        }
+        foodCartJpaRepository.deleteById(foodCartId);
     }
 
     @Override

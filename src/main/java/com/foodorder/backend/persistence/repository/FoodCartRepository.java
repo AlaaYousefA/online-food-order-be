@@ -12,7 +12,7 @@ public interface FoodCartRepository {
 
     FoodCart save(FoodCart foodCart);
 
-    void deleteItemFromCart(Long foodItemId);
+    void deleteItemFromCart(Long foodCartId);
 
     Long numberOfItemsInCart(Long cartId);
 

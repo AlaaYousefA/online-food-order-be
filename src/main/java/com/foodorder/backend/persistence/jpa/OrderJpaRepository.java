@@ -1,6 +1,7 @@
 package com.foodorder.backend.persistence.jpa;
 
 import com.foodorder.backend.persistence.entity.OrdersEntity;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -28,7 +29,7 @@ public interface OrderJpaRepository extends JpaRepository<OrdersEntity, Long> {
             "AND fc.quantity > fi.quantity")
     Boolean isItemsInCartAvailable(@Param("cartId") Long cartId);
 
-
+    @Transactional
     @Modifying
     @Query(value = "UPDATE food_item fi " +
             "JOIN food_cart fc ON fi.id = fc.food_item_id " +
