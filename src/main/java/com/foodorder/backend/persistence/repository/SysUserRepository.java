@@ -8,4 +8,6 @@ public interface SysUserRepository {
     SysUser getUserById(Long id);
 
     SysUser save(SysUser sysUser);
+
+    SysUser findByUsername(String username);
 }

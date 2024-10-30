@@ -25,4 +25,11 @@ public class SysUserAdapter implements SysUserRepository {
     public SysUser save(SysUser sysUser) {
         return sysUserMapper.entityToModel(sysUserJpaRepository.save(sysUserMapper.modelToEntity(sysUser)));
     }
+
+    @Override
+    public SysUser findByUsername(String username) {
+        return sysUserMapper.entityToModel(sysUserJpaRepository.findByUsername(username).orElseThrow(
+                ()-> new ResourceNotFoundException("username not found : " + username)
+        ));
+    }
 }
