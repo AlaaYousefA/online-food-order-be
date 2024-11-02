@@ -2,10 +2,12 @@ package com.foodorder.backend.domain.services;
 
 import com.foodorder.backend.application.exception.DuplicateResourceException;
 import com.foodorder.backend.application.exception.InvalidCredentialsException;
+import com.foodorder.backend.domain.model.Cart;
 import com.foodorder.backend.domain.model.SysUser;
 import com.foodorder.backend.domain.model.UserAuthentication;
 import com.foodorder.backend.domain.services.security.JwtService;
 import com.foodorder.backend.domain.services.security.SysUserDetailsService;
+import com.foodorder.backend.persistence.repository.CartRepository;
 import com.foodorder.backend.persistence.repository.SysUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,6 +28,7 @@ public class IdmService {
     private final SysUserDetailsService sysUserDetailsService;
     private final SysUserRepository sysUserRepository;
     private final PasswordEncoder passwordEncoder;
+    private final CartRepository cartRepository;
 
     public SysUser register(SysUser user) {
         validateUserInfo(user);
@@ -58,6 +61,14 @@ public class IdmService {
     private void fillUpMissingInfo(SysUser user) {
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(LocalDateTime.now());
+
+        Cart cart = Cart.builder()
+                .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
+                .build();
+        Cart savedCart = cartRepository.save(cart);
+
+        user.setCartId(savedCart.getId());
     }
 
     private UserAuthentication buildUserAuthentication(UserAuthentication userAuthentication) {

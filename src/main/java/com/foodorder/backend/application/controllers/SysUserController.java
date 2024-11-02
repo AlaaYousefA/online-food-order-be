@@ -14,13 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class SysUserController {
     private final SysUserService sysUserService;
-    private final SysUserMapper sysUserMapper;
 
-    @PostMapping
-    public ResponseEntity<SysUserResponse> createUser(@RequestBody SysUserRequest request) {
-        SysUser sysUser = sysUserMapper.requestToModel(request);
-        return ResponseEntity.ok(sysUserMapper.modelToResponse(sysUserService.createUser(sysUser)));
-    }
     @GetMapping("/{id}")
     public ResponseEntity<SysUser> getUserById(@PathVariable Long id) {
         return ResponseEntity.ok(sysUserService.getUserById(id));
