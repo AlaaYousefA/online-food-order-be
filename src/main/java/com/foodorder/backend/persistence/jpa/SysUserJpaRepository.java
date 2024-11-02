@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface SysUserJpaRepository extends JpaRepository<SysUserEntity, Long> {
     Optional<SysUserEntity> findByUsername(String username);
+    boolean existsByUsername(String username);
 }

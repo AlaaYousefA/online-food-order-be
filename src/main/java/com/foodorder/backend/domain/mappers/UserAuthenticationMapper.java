@@ -5,10 +5,11 @@ import com.foodorder.backend.application.dtos.authentication.UserAuthenticationR
 import com.foodorder.backend.application.dtos.sysuser.SysUserRequest;
 import com.foodorder.backend.application.dtos.sysuser.SysUserResponse;
 import com.foodorder.backend.domain.model.SysUser;
+import com.foodorder.backend.domain.model.UserAuthentication;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface UserAuthenticationMapper {
-    SysUser requestToModel(UserAuthenticationRequest userAuthenticationRequest);
-    UserAuthenticationResponse modelToResponse(SysUser sysUser);
+    UserAuthentication requestToModel(UserAuthenticationRequest userAuthenticationRequest);
+    UserAuthenticationResponse modelToResponse(UserAuthentication userAuthentication);
 }

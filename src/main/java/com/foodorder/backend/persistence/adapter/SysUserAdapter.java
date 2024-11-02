@@ -32,4 +32,9 @@ public class SysUserAdapter implements SysUserRepository {
                 ()-> new ResourceNotFoundException("username not found : " + username)
         ));
     }
+
+    @Override
+    public boolean isUsernameAlreadyExists(String username) {
+        return sysUserJpaRepository.existsByUsername(username);
+    }
 }

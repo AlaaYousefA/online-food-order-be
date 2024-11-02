@@ -10,4 +10,6 @@ public interface SysUserRepository {
     SysUser save(SysUser sysUser);
 
     SysUser findByUsername(String username);
+
+    boolean isUsernameAlreadyExists(String username);
 }
