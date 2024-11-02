@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class SysUserDetailsService implements UserDetailsService {
-    private final SysUserRepository sysUserRepository;
+    private final SysUserRepository sysUserRepository; // mapper between sys-user and user
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
